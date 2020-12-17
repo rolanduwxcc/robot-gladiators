@@ -45,7 +45,7 @@ var fight = function (enemyName) {
         enemyHealth = Math.max(0, enemyHealth - damage);
 
         // Log a result message to the console to prove it worked
-        console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining");
+        console.log(playerName + " attacked " + enemyName + " for " + damage + " damage. " + enemyName + " now has " + enemyHealth + " health remaining");
 
         // check enemy's health
         if (enemyHealth <= 0) {
@@ -60,7 +60,7 @@ var fight = function (enemyName) {
         var damage = randomNumber(enemyAttack - 3, enemyAttack);
 
         playerHealth = Math.max(0, playerHealth - damage);
-        console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining");
+        console.log(enemyName + " attacked " + playerName + " for " + damage + " damage. " + playerName + " now has " + playerHealth + " health remaining");
 
         //check player's health
         if (playerHealth <= 0) {
