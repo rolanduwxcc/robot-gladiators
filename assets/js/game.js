@@ -51,6 +51,7 @@ var fight = function (enemy) {
             // Damage calculation
             if (enemy.health <= 0) {
                 window.alert(enemy.name + " has died!");
+                playerInfo.money = playerInfo.money + 20;
                 break; //enemy is dead break out of loop
             }
             else {
@@ -109,8 +110,19 @@ var startGame = function() {
 
 var endGame = function() {
     window.alert("The game has now ended. Let's see how you did!");
+    var currentHighScore = localStorage.getItem("robotHighScore");
+    if (currentHighScore === null) {currentHighScore = 0;}
+
+    if (currentHighScore < playerInfo.money) {
+        window.alert(`A new record! Previous high score was ${currentHighScore},
+        and the new hight score is ${playerInfo.money}`);
+        console.log(currentHighScore,"----",playerInfo.money);
+        localStorage.setItem("robotHighScore",playerInfo.money);
+    }
+
     if (playerInfo.health > 0) {
-        window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
+        window.alert(`Great job, you've survived the game! 
+        Your score --> ${playerInfo.money}.`);
     }
     else {
         window.alert("You've lost your robot in battle.");
@@ -153,16 +165,14 @@ var shop = function() {
 
 var randomNumber = function(min, max) {
     var value = Math.floor(Math.random() * (max - min + 1)) + min;
-
     return value;
 };
+
 var getPlayerName = function() {
     var name = "";
-
     while (name === "" || name === null || name === "null" || name === " ") {
         name = window.prompt("What is your robot's name? ");
     }
-
     console.log("Your robot's name is " + name);
     return name;
 };
@@ -226,5 +236,5 @@ var enemyInfo = [
 
 
 
-//start the game when the page loads
+//----------------------------------------start the game when the page loads
 startGame();
